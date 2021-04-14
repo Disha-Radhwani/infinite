@@ -40,6 +40,8 @@ function setup() {
 
   var message = "This is a message";
  console.log(message)
+
+  
   
   trex = createSprite(50,displayHeight-375,20,50);
   trex.addAnimation("running", trex_running);
@@ -52,10 +54,11 @@ function setup() {
   ground.addImage("ground",groundImage);
   ground.x = ground.width /2;
   
-  gameOver = createSprite(800,300);
+  gameOver = createSprite(camera.x,300);
   gameOver.addImage(gameOverImg);
   
-  restart = createSprite(830,400);
+  
+  restart = createSprite(camera.x,400);
   restart.addImage(restartImg);
   
  
@@ -82,7 +85,7 @@ function draw() {
   background(180);
   //displaying score
   textSize(30);
-  text("Score: "+ score, 800,200);
+  text("Score: "+ score, camera.x,200);
   
   
   if(gameState === PLAY){
@@ -154,7 +157,7 @@ function draw() {
   //stop trex from falling down
   trex.collide(invisibleGround);
   
-  
+camera.x=trex.x  
 
 
   drawSprites();
